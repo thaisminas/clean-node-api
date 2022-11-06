@@ -1,10 +1,16 @@
 import {SignUpController} from './signup'
 import {MissingParamsError} from "../errors/missing-params-error";
 
+
+const mokeSut = () : SignUpController => {
+    return new SignUpController()
+}
+
+
 describe('SignUp Controller', () => {
     test('Should return 400 if no name is provided', ()=> {
         //instanciar a classe
-        const sut = new SignUpController()
+        const sut = mokeSut()
         //mock do objeto a ser passado para meu metodo
         const httpRequest = {
             body: {
@@ -21,7 +27,7 @@ describe('SignUp Controller', () => {
     })
 
     test('Should return 400 if no email is provided', ()=> {
-        const sut = new SignUpController()
+        const sut = mokeSut()
         const httpRequest = {
             body: {
                 name: 'any_name',
@@ -36,7 +42,7 @@ describe('SignUp Controller', () => {
     })
 
     test('Should return 400 if no password is provided', ()=> {
-        const sut = new SignUpController()
+        const sut = mokeSut()
         const httpRequest = {
             body: {
                 name: 'any_name',
@@ -51,7 +57,7 @@ describe('SignUp Controller', () => {
     })
 
     test('Should return 400 if no password confirmation is provided', ()=> {
-        const sut = new SignUpController()
+        const sut = mokeSut()
         const httpRequest = {
             body: {
                 name: 'any_name',
